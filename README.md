@@ -30,6 +30,6 @@ This R code use shiny to simulate the pharmacokinetic of methylphenidate immedia
 
 ## In action:
 ### R
-![ ](screenshot.png)
+![ ](screenshots/screenshot.png)
 ### Python
-![ ](screenshot_python.png)
+![ ](screenshots/screenshot_python.png)
