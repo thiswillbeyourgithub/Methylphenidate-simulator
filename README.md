@@ -11,7 +11,7 @@ This R code use shiny to simulate the pharmacokinetic of methylphenidate immedia
 * Don't hesitate to open an issue if you have **any** question, I'll always take a look
 * If you find any typo or error let me know, citicim is **very** welcome.
 * All numbers are from this poor quality study  https://escholarship.org/uc/item/9gv7p39v so don't hesitate to edit the things to what suits you best
-* My friend also used the FOSS app `diary` on his android phone to register his weight and all his drug usage (mg hour etc) so I coded him an importer to import the data in R. It's in this repo.
+* My friend also used the FOSS app [diary](https://github.com/billthefarmer/diary) on his android phone to register his weight and all his drug usage (mg hour etc) so I coded him an importer to import the data in R. It's in this repo.
 * This repo is licensed
 
 
