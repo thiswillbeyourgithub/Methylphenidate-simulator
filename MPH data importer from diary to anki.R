@@ -2,14 +2,14 @@
 firstRun<-TRUE # to edit manually
 if(firstRun==TRUE) {
     original_directory = "/home/$USER/Documents/Synchro\\ folder/phone\\ folder/diary"
-    copy_directory = "/home/$USER/Downloads/mph/diary_data/"
+    copy_directory = "/home/$USER/Documents/Perso/Bordel/git_repository/methylphenidate\\ IR\\ simulator\\ pharmacocinetic\\ R\\ and\\ python\\ and\\ diary\\ importer/diary_data/"
     system(paste("trash ",copy_directory, "diary",sep=""),intern=FALSE,ignore.stderr = TRUE, ignore.stdout = TRUE) # remove old
     com <- paste("cp -R", original_directory, copy_directory,sep=" ")
     system(com,intern=FALSE,ignore.stderr = TRUE, ignore.stdout = TRUE) # copies new
 }
 
 # get file hierarchy
-com <- "cd /home/$USER/Downloads/mph/data/diary && find . -iname '*txt'"
+com <- paste("cd ",copy_directory, "diary && find . -iname '*txt'",sep = "")
 file_hierarchy <- system(command=com, intern=TRUE)
 n <- length(file_hierarchy)
 
@@ -42,6 +42,7 @@ for(a in seq(length(df[,1]))) {
 }
 
 # correction : ritaline and ritaline LP are both matched above so I need to add this to differentiate them :
+# also methylphenidate lp = concerta
 for(a in seq(length(df[,1]))) {
   if(df[a,"Drug"]=="Ritaline") {
     truth <- grep("lp", df[a,"Content"],ignore.case=TRUE)
@@ -49,9 +50,10 @@ for(a in seq(length(df[,1]))) {
       df[a,"Drug"] <- "Ritaline LP"
     }
     truth <- NULL
-  }
+  #}
   occ <- length(strsplit(df[a,"Content"],"italin")[[1]])
   if(occ > 2) {     df[a,"Drug"] <- "Several Found!"     } # if italin several times => probably ritaline LP + ritaline IR
+  }
 }
 
 # prune irrelevant diary entries
@@ -138,8 +140,9 @@ for(a in seq(length(df[,1]))) {
 View(df)
 
 # todo :
-# remove , from hours
+# remove commas from hours
 # do plots
+# corrects concerta : it is less absorbed so 54=45 36=30 18=15
 
 
 rm(truth) ; rm(a) ; rm(b) ; rm(firstRun) ; rm(com) ; rm(mg) ; rm(drugs)
