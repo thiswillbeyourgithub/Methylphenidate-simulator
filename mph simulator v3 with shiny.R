@@ -9,10 +9,10 @@ step <- 0.1 # time subdivision
 x <- seq(0,24,step) # time 
 # cp <- 10 # mg inside a pill
 dose <- cp*0.4 # bioabailability=0.4 source : https://escholarship.org/uc/item/9gv7p39v
-# half_life <- 2.5 # en heure source : https://escholarship.org/uc/item/9gv7p39v
+# half_life <- 2.5 # in hour source : https://escholarship.org/uc/item/10gv7p39v
 # time at which the dose is taken
 # hour_taken <- c(8,9,11)
-#      ajoute 1h30 si a jeun ou 1h si pendant le repas ; source : https://escholarship.org/uc/item/9gv7p39v
+#      add 1h30 if on empty stomach or 1h if ingested during a meal ; source : https://escholarship.org/uc/item/9gv7p39v
 total_amount <- length(hour_taken)*cp
 
 
