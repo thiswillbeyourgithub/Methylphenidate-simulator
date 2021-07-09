@@ -1,7 +1,12 @@
+# please fill this path to your diary folder
+user_supplied_original_dir = ""
+
+
+
 # copy originals to be safe
 firstRun<-TRUE # to edit manually
 if(firstRun==TRUE) {
-    original_directory = "/home/$USER/Documents/Synchro\\ folder/phone\\ folder/diary"
+    original_directory = user_supplied_original_dir
     copy_directory = "/home/$USER/Documents/Perso/Bordel/git_repository/methylphenidate\\ IR\\ simulator\\ pharmacocinetic\\ R\\ and\\ python\\ and\\ diary\\ importer/diary_data/"
     system(paste("trash ",copy_directory, "diary",sep=""),intern=FALSE,ignore.stderr = TRUE, ignore.stdout = TRUE) # remove old
     com <- paste("cp -R", original_directory, copy_directory,sep=" ")
