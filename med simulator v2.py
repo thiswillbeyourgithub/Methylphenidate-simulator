@@ -60,7 +60,7 @@ ax.set(xlim=[starting_hour_plot,24],
         ylim=[0,max_y_plot])
 #axis
 ax.set(xlabel='Time over the day (hour)',
-        ylabel='Amount of MPH (arbitrary unit)')
+        ylabel='Amount of Med (arbitrary unit)')
 xticks=[]
 for i in range(0,10):xticks.append(i)
 xticks.append(max(y))

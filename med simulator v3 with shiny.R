@@ -3,7 +3,7 @@
 # I made a python version but it was not as good, if you want it open an issue
 # the Shiny code is at the bottom
 
-mph <- function(cp=10, hour_taken=c(8,10),half_life=2.5, sleep_threshold=0.4,max_y_plot=8) {
+med <- function(cp=10, hour_taken=c(8,10),half_life=2.5, sleep_threshold=0.4,max_y_plot=8) {
 
 step <- 0.1 # time subdivision
 x <- seq(0,24,step) # time 
@@ -32,7 +32,7 @@ for(i in seq(1,length(hour_taken))) {
 starting_hour_plot <- 7
 # max_y_plot <- 8
 plot(seq(starting_hour_plot,max(x),step),y[seq(starting_hour_plot,max(x),step)*10],
-     xlab=("Time over the day (hour)"),ylab="Amount of MPH (arbitrary unit)",
+     xlab=("Time over the day (hour)"),ylab="Amount of Med (arbitrary unit)",
      type="l",ylim=c(0,max_y_plot),xaxt='n',yaxt='n', frame.plot = TRUE)
 #plot details
 plot_title=paste(c("Methylphenidate Simulator\n(", total_amount, "mg in ",length(hour_taken), " pills)"),collapse='')
@@ -78,7 +78,7 @@ polygon(xx,yy,density=10,col="grey")
 
 library(shiny)
 ui <- fluidPage(
-  titlePanel("MPH Simulator !"),
+  titlePanel("Med-pharmacokinetic-Simulator !"),
   fluidRow(column(2,
       textInput(inputId = "hours",value = "8.5 13",label="Times of ingestion, separated with a space"),
       em("example : \"8.5 9 13\" if taken at 8h30 and 9AM and 1PM."),br() ),
@@ -124,7 +124,7 @@ ui <- fluidPage(
 
 server <- function(input, output) {
   output$distPlot <- renderPlot({
-    mph(input$cp, as.numeric(c(strsplit(input$hours, split=" "),recursive=T)), input$half_life, input$sleep_threshold, input$max_y_plot)
+    med(input$cp, as.numeric(c(strsplit(input$hours, split=" "),recursive=T)), input$half_life, input$sleep_threshold, input$max_y_plot)
   },height = 900)
 }
 shinyApp(ui = ui, server = server)
